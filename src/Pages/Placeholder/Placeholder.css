@@ -1,0 +1,162 @@
+/* ---------- Overall Layout ---------- */
+.place-order {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 60px;
+  margin-top: 80px;
+  padding: 0 5%;
+  flex-wrap: wrap;
+  background: #fafafa;
+  box-sizing: border-box;
+}
+
+/* ---------- Left Section ---------- */
+.place-order-left {
+  width: 100%;
+  max-width: 500px;
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease;
+}
+
+.place-order-left:hover {
+  transform: translateY(-2px);
+}
+
+.place-order-left .title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 35px;
+  color: #333;
+  border-left: 4px solid tomato;
+  padding-left: 10px;
+}
+
+/* ---------- Input Fields ---------- */
+.place-order-left input {
+  margin-bottom: 18px;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #d0d0d0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  background-color: #fdfdfd;
+  transition: all 0.25s ease;
+}
+
+.place-order-left input:focus {
+  border-color: tomato;
+  box-shadow: 0 0 6px rgba(255, 99, 71, 0.3);
+  background-color: #fff;
+}
+
+/* ---------- Multi Input Fields ---------- */
+.place-order-left .multy-fields {
+  display: flex;
+  gap: 12px;
+}
+
+.place-order-left .multy-fields input {
+  flex: 1;
+}
+
+/* ---------- Right Section ---------- */
+.place-order-right {
+  width: 100%;
+  max-width: 500px;
+  background: #fff;
+  padding: 30px 35px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* ---------- Cart Total Section ---------- */
+.cart-total {
+  margin-top: 30px;
+}
+
+.cart-total h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 20px;
+  border-bottom: 2px solid tomato;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+.cart-total-details {
+  display: flex;
+  justify-content: space-between;
+  color: #444;
+  margin: 12px 0;
+  font-size: 1rem;
+}
+
+.cart-total-details b {
+  color: #000;
+}
+
+.cart-total hr {
+  border: none;
+  border-top: 1px dashed #ccc;
+  margin: 10px 0;
+}
+
+/* ---------- Payment Button ---------- */
+.cart-total button {
+  margin-top: 25px;
+  width: 100%;
+  background: linear-gradient(135deg, tomato, #ff7043);
+  color: #fff;
+  border: none;
+  padding: 14px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cart-total button:hover {
+  background: linear-gradient(135deg, #ff5722, #ff8a65);
+  box-shadow: 0 6px 15px rgba(255, 87, 34, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ---------- Responsive Design ---------- */
+@media (max-width: 900px) {
+  .place-order {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .place-order-left,
+  .place-order-right {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .place-order-left,
+  .place-order-right {
+    padding: 20px;
+  }
+
+  .place-order-left .title {
+    font-size: 1.4rem;
+  }
+
+  .cart-total h2 {
+    font-size: 1.2rem;
+  }
+
+  .cart-total button {
+    font-size: 0.9rem;
+    padding: 12px;
+  }
+}
