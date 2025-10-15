@@ -1,0 +1,36 @@
+.order-status-page {
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+  font-family: Arial, sans-serif;
+}
+
+.order-items {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.order-status h3 {
+  color: #ff7b00;
+  margin-top: 20px;
+}
+
+.order-status p {
+  font-size: 16px;
+  color: green;
+  font-weight: bold;
+}
+

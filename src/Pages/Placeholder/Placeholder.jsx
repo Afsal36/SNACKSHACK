@@ -4,23 +4,18 @@ import { StoreContext } from "../../Context/StoreContext";
 import { useNavigate } from "react-router";
 
 function Placeholder() {
-  const { getTotalCartAmount } = useContext(StoreContext);
-  const navigate = useNavigate(); // For navigation to Home
+  const { getTotalCartAmount, placeOrder } = useContext(StoreContext);
+  const navigate = useNavigate();
 
   const handlePayment = (e) => {
-    e.preventDefault(); // Prevent form reload
+    e.preventDefault();
 
-    // Collect input values
     const inputs = document.querySelectorAll(".place-order input");
     let allFilled = true;
-
     inputs.forEach((input) => {
-      if (input.value.trim() === "") {
-        allFilled = false;
-      }
+      if (input.value.trim() === "") allFilled = false;
     });
 
-    // Validation checks
     if (getTotalCartAmount() === 0) {
       alert("🛒 Your cart is empty. Please add items before proceeding.");
       return;
@@ -31,12 +26,12 @@ function Placeholder() {
       return;
     }
 
-    // Success message
-    alert("✅ Order placed successfully! Redirecting to Home...");
+    // Save order and clear cart
+    placeOrder();
+    alert("✅ Order placed successfully!");
 
-    // Redirect to Home after 1.5 seconds
     setTimeout(() => {
-      navigate("/"); // Redirect to home page
+      navigate("/order-status");
     }, 1000);
   };
 
@@ -47,17 +42,17 @@ function Placeholder() {
           <p className="title">Delivery Information</p>
           <div className="multy-fields">
             <input type="text" placeholder="First Name" required />
-            <input type="text" placeholder="Last Name"  />
+            <input type="text" placeholder="Last Name" />
           </div>
           <input type="email" placeholder="Email Address" required />
           <input type="text" placeholder="Street" />
           <div className="multy-fields">
-            <input type="text" placeholder="City" required/>
+            <input type="text" placeholder="City" required />
             <input type="text" placeholder="State" required />
           </div>
           <div className="multy-fields">
             <input type="number" placeholder="Zip code" required />
-            <input type="text" placeholder="Country" required/>
+            <input type="text" placeholder="Country" required />
           </div>
           <input type="number" placeholder="Phone" />
         </div>
@@ -95,6 +90,7 @@ function Placeholder() {
 }
 
 export default Placeholder;
+
 
 
 

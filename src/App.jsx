@@ -6,6 +6,7 @@ import Placeholder from "./Pages/Placeholder/Placeholder";
 import Cart from "./Pages/Cart/Cart";
 import Footer from "./Components/Footer/Footer";
 import LoginPopup from "./Components/LoginPopup/LoginPopup";
+import OrderStatus from "./Pages/OrderStatus/OrderStatus";
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/order" element={<Placeholder />} />
+          <Route path="/order-status" element={<OrderStatus/>}/>
         </Routes>
       </div>
       <Footer />
