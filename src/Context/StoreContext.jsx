@@ -4,11 +4,11 @@ import { food_list } from "../assets/assets";
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = ({ children }) => {
-  // Cart stored as { itemId: quantity }
+  // 🛒 Cart stored as { itemId: quantity }
   const [cartItems, setCartItems] = useState({});
-  const [latestOrder, setLatestOrder] = useState({}); // Store last placed order
+  const [latestOrder, setLatestOrder] = useState({}); // 🧾 Stores last placed order
 
-  // Add item to cart
+  // ➕ Add item to cart
   function addToCart(itemId) {
     setCartItems((prev) => ({
       ...prev,
@@ -16,7 +16,7 @@ const StoreContextProvider = ({ children }) => {
     }));
   }
 
-  // Remove item from cart
+  // ➖ Remove item from cart
   function removeCartItem(itemId) {
     setCartItems((prev) => {
       if (!prev[itemId]) return prev;
@@ -30,22 +30,24 @@ const StoreContextProvider = ({ children }) => {
     });
   }
 
-  // Calculate total cart amount
+  // 💰 Calculate total cart amount
   function getTotalCartAmount() {
     let totalAmount = 0;
     for (const itemId in cartItems) {
       if (cartItems[itemId] > 0) {
         const itemInfo = food_list.find((product) => product._id === itemId);
-        totalAmount += itemInfo.price * cartItems[itemId];
+        if (itemInfo) {
+          totalAmount += itemInfo.price * cartItems[itemId];
+        }
       }
     }
     return totalAmount;
   }
 
-  // Place order: save current cart and clear it
+  // ✅ Place order: store current cart and clear it
   function placeOrder() {
-    setLatestOrder(cartItems);
-    setCartItems({});
+    setLatestOrder({ ...cartItems }); // store current cart items
+    setCartItems({}); // empty the cart after placing order
   }
 
   const contextValue = {
@@ -57,6 +59,7 @@ const StoreContextProvider = ({ children }) => {
     getTotalCartAmount,
     placeOrder,
     setCartItems,
+    setLatestOrder,
   };
 
   return (
@@ -67,3 +70,4 @@ const StoreContextProvider = ({ children }) => {
 };
 
 export default StoreContextProvider;
+

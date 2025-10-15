@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import "./Placeholder.css";
 import { StoreContext } from "../../Context/StoreContext";
+import { useNavigate } from "react-router"; // ✅ Import navigate
 
 function Placeholder() {
   const { getTotalCartAmount, placeOrder } = useContext(StoreContext);
+  const navigate = useNavigate(); // ✅ Hook for navigation
 
   const handlePayment = (e) => {
     e.preventDefault();
@@ -24,12 +26,13 @@ function Placeholder() {
       return;
     }
 
-    // Save order and show success alert
+    // ✅ Save order and clear cart
     placeOrder();
-    alert("✅ Order placed successfully!");
 
-    // Redirect to Order Status page after alert OK click
-    window.location.href = "/order-status";
+    // ✅ Show alert and navigate on OK
+    if (window.confirm("✅ Order placed successfully! Click OK to view order status.")) {
+      navigate("/order-status"); // ✅ Use navigate instead of page reload
+    }
   };
 
   return (
@@ -42,7 +45,7 @@ function Placeholder() {
             <input type="text" placeholder="Last Name" />
           </div>
           <input type="email" placeholder="Email Address" required />
-          <input type="text" placeholder="Street" />
+          <input type="text" placeholder="Street" required />
           <div className="multy-fields">
             <input type="text" placeholder="City" required />
             <input type="text" placeholder="State" required />
@@ -51,7 +54,7 @@ function Placeholder() {
             <input type="number" placeholder="Zip code" required />
             <input type="text" placeholder="Country" required />
           </div>
-          <input type="number" placeholder="Phone" />
+          <input type="number" placeholder="Phone" required />
         </div>
 
         <div className="place-order-right">
@@ -65,7 +68,7 @@ function Placeholder() {
               <hr />
               <div className="cart-total-details">
                 <p>Delivery Fee</p>
-                <p>₹{getTotalCartAmount() === 0 ? 0 : 2}</p>
+                <p>₹{getTotalCartAmount() === 0 ? 0 : 50}</p>
               </div>
               <hr />
               <div className="cart-total-details">
@@ -74,7 +77,7 @@ function Placeholder() {
                   ₹
                   {getTotalCartAmount() === 0
                     ? 0
-                    : getTotalCartAmount() + 2}
+                    : getTotalCartAmount() + 50}
                 </b>
               </div>
             </div>
@@ -87,5 +90,7 @@ function Placeholder() {
 }
 
 export default Placeholder;
+
+
 
 
