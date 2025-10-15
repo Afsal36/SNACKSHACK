@@ -4,6 +4,16 @@ import { StoreContext } from "../../Context/StoreContext";
 
 function Placeholder() {
   const { getTotalCartAmount } = useContext(StoreContext);
+
+  const handlePayment = (e) => {
+    e.preventDefault(); // Prevents page reload
+    if (getTotalCartAmount() === 0) {
+      alert("Your cart is empty. Please add items before proceeding.");
+    } else {
+      alert("✅ Order placed successfully! Your food is being packed.");
+    }
+  };
+
   return (
     <div>
       <form className="place-order">
@@ -23,8 +33,9 @@ function Placeholder() {
             <input type="text" placeholder="Zip code" />
             <input type="text" placeholder="Country" />
           </div>
-          <input type="num" placeholder="phone" />
+          <input type="num" placeholder="Phone" />
         </div>
+
         <div className="place-order-right">
           <div className="cart-total">
             <h2>Cart Total</h2>
@@ -46,7 +57,7 @@ function Placeholder() {
                 </b>
               </div>
             </div>
-            <button>PROCEED TO PAYMENT</button>
+            <button onClick={handlePayment}>PROCEED TO PAYMENT</button>
           </div>
         </div>
       </form>
@@ -55,3 +66,4 @@ function Placeholder() {
 }
 
 export default Placeholder;
+
