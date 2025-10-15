@@ -1,11 +1,9 @@
 import React, { useContext } from "react";
 import "./Placeholder.css";
 import { StoreContext } from "../../Context/StoreContext";
-import { useNavigate } from "react-router";
 
 function Placeholder() {
   const { getTotalCartAmount, placeOrder } = useContext(StoreContext);
-  const navigate = useNavigate();
 
   const handlePayment = (e) => {
     e.preventDefault();
@@ -26,13 +24,12 @@ function Placeholder() {
       return;
     }
 
-    // Save order and clear cart
+    // Save order and show success alert
     placeOrder();
     alert("✅ Order placed successfully!");
 
-    setTimeout(() => {
-      navigate("/order-status");
-    }, 1000);
+    // Redirect to Order Status page after alert OK click
+    window.location.href = "/order-status";
   };
 
   return (
@@ -90,7 +87,5 @@ function Placeholder() {
 }
 
 export default Placeholder;
-
-
 
 
