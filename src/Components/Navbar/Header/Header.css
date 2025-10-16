@@ -2,8 +2,8 @@
 .header {
   height: 34vw;
   margin: 30px auto;
-  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
-              url('/header_img.png') no-repeat center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url("/header_img.png") no-repeat center center;
   background-size: cover;
   border-radius: 20px;
   position: relative;
@@ -104,4 +104,45 @@
     padding: 2.5vw 5vw;
     font-size: max(3.5vw, 14px);
   }
+}
+
+/* 🌀 Loading Overlay */
+.header-loader {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #fff5ef, #ffe4d4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  z-index: 5;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* 🔄 Spinner Animation */
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 5px solid rgba(255, 123, 0, 0.2);
+  border-top: 5px solid #ff7b00;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* 🔁 Spinner Rotation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ⏳ Loader Text */
+.header-loader p {
+  margin-top: 12px;
+  font-size: 1rem;
+  color: #ff7b00;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  animation: fadeIn 0.5s ease-in-out;
 }

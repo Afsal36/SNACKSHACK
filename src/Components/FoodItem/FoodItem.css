@@ -125,3 +125,64 @@
     transform: translateY(0);
   }
 }
+/* 🌀 Loader Overlay for Food Item */
+.food-item-loader {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  z-index: 2;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* 🔁 Spinner */
+.spinner {
+  width: 35px;
+  height: 35px;
+  border: 3px solid rgba(255, 123, 0, 0.2);
+  border-top: 3px solid #ff7b00;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+/* ✨ Spinner rotation animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ⏳ Loader text */
+.food-item-loader p {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #ff7b00;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+}
+
+/* Smooth fade animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Hide image until loaded */
+.food-item-image.hidden {
+  opacity: 0;
+}
+
+.food-item-image.visible {
+  opacity: 1;
+  transition: opacity 0.4s ease-in;
+}
